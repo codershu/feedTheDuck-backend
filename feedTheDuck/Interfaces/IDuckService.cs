@@ -11,6 +11,6 @@ namespace feedTheDuck.Interfaces
         Task<Response<Guid>> AddRecord(DuckRecordRequest request);
         Task<Response<List<DuckFeedRecords>>> GetAllRecords();
         Task<Response<Guid>> UpdateRecord(DuckRecordRequest request);
-        Task<Response<Guid>> DeleteRecord(DuckRecordRequest request);
+        Task<Response<bool>> DeleteRecord(DuckRecordRequest request);
     }
 }

@@ -46,5 +46,11 @@ namespace feedTheDuck.Controllers
         {
             return _duckService.UpdateRecord(request).Result;
         }
+
+        [HttpPost("DeleteRecord")]
+        public ActionResult<Response<bool>> DeleteRecord(DuckRecordRequest request)
+        {
+            return _duckService.DeleteRecord(request).Result;
+        }
     }
 }

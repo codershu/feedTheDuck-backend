@@ -135,9 +135,20 @@ namespace feedTheDuck.Services
             return Response<Guid>.Ok(target.Id, "Record updated successfully");
         }
 
-        public Task<Response<Guid>> DeleteRecord(DuckRecordRequest request)
+        public async Task<Response<bool>> DeleteRecord(DuckRecordRequest request)
         {
-            throw new NotImplementedException();
+            var accessResponse = await CanAccessRecord(request);
+            if (accessResponse == null || !accessResponse.IsSuccess)
+                return Response<bool>.Error(accessResponse.Message);
+
+            var target = await _context.DuckFeedRecords.FirstOrDefaultAsync(x => x.Id == request.Id);
+            if (target == null)
+                return Response<bool>.Error("Record not found");
+
+            _context.DuckFeedRecords.Remove(target);
+            await _context.SaveChangesAsync();
+
+            return Response<bool>.Ok(true, "Record deleted successfully");
         }
 
         private async Task<Response<bool>> CanAccessRecord(DuckRecordRequest request)
