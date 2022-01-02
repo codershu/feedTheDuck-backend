@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using feedTheDuck.Models;
+using feedTheDuck.Interfaces;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
 
 namespace feedTheDuck.Controllers
 {
@@ -12,10 +14,24 @@ namespace feedTheDuck.Controllers
     [Route("[controller]")]
     public class DuckController : Controller
     {
-        // GET: /<controller>/
-        public IActionResult Index()
+        private readonly IDuckService _duckService;
+
+        public DuckController(IDuckService duckService)
         {
-            return View();
+            _duckService = duckService;
+        }
+
+        [HttpGet]
+        public string Get()
+        {
+            return "Hi! This is FeedTheDuck Backend Server for Freshworks Studio";
+        }
+
+
+        [HttpPost("AddRecord")]
+        public ActionResult<Response<bool>> AddRecord(DuckRecordRequest request)
+        {
+            return _duckService.AddRecord(request).Result;
         }
     }
 }
