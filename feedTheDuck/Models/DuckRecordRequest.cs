@@ -7,7 +7,7 @@ namespace feedTheDuck.Models
         {
         }
 
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public string Location { get; set; }
         public string DuckType { get; set; }
         public string Food { get; set; }
@@ -17,6 +17,8 @@ namespace feedTheDuck.Models
         public long FoodAmount { get; set; }
         public long DuckAmount { get; set; }
         public DateTime CreatedOn { get; set; }
+        public string UpdatedBy { get; set; }
+        public DateTime UpdatedOn { get; set; }
     }
 }
 

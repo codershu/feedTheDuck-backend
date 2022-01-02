@@ -117,7 +117,7 @@ namespace feedTheDuck.Services
             if (accessResponse == null || !accessResponse.IsSuccess)
                 return Response<Guid>.Error(accessResponse.Message);
 
-            var target = await _context.DuckFeedRecords.FirstOrDefaultAsync(x => x.Id == request.Id);
+            var target = await _context.DuckFeedRecords.FirstOrDefaultAsync(x => x.Id.ToString() == request.Id);
             if(target == null)
                 return Response<Guid>.Error("Record not found");
 
@@ -141,7 +141,7 @@ namespace feedTheDuck.Services
             if (accessResponse == null || !accessResponse.IsSuccess)
                 return Response<bool>.Error(accessResponse.Message);
 
-            var target = await _context.DuckFeedRecords.FirstOrDefaultAsync(x => x.Id == request.Id);
+            var target = await _context.DuckFeedRecords.FirstOrDefaultAsync(x => x.Id.ToString() == request.Id);
             if (target == null)
                 return Response<bool>.Error("Record not found");
 
