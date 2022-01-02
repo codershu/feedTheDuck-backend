@@ -12,6 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+using feedTheDuck.Context;
 
 namespace feedTheDuck
 {
@@ -29,6 +31,11 @@ namespace feedTheDuck
         {
             services.AddControllers();
             services.AddSingleton<IDuckService, DuckService>();
+
+            var con = Configuration.GetConnectionString("MyDbConnection");
+
+            services.AddDbContext<DuckContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("MyDbConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
