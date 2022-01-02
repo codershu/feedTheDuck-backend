@@ -6,6 +6,9 @@ This project is the backend server for https://github.com/codershu/feedTheDuck-f
 
 I am running this sever on Mac and the detail is as below, but you can run it on other type of OS as it matches .Net SDK and runtimes.
 
+![image](https://user-images.githubusercontent.com/44121753/147892682-9966b9d2-8668-45cc-8ee7-c78c48068d02.png)
+
+
 .NET SDK (reflecting any global.json):
  Version:   5.0.400
  Commit:    d61950f9bf
