@@ -19,13 +19,6 @@ namespace feedTheDuck
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-//.ConfigureAppConfiguration((context, config) =>
-//{
-//    var keyVaultEndpoint = new Uri("https://feedtheduck-keyvault.vault.azure.net/secrets/ConnectionStrings--MyDbConnection/4851e700eee74c268af26e7962751769");//new Uri(Environment.GetEnvironmentVariable("VaultUri"));
-//config.AddAzureKeyVault(
-//keyVaultEndpoint,
-//new DefaultAzureCredential());
-//})
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

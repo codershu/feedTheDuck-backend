@@ -29,7 +29,7 @@ namespace feedTheDuck.Controllers
 
 
         [HttpPost("AddRecord")]
-        public ActionResult<Response<bool>> AddRecord(DuckRecordRequest request)
+        public ActionResult<Response<Guid>> AddRecord(DuckRecordRequest request)
         {
             return _duckService.AddRecord(request).Result;
         }

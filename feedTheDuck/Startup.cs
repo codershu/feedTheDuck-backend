@@ -30,7 +30,7 @@ namespace feedTheDuck
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<IDuckService, DuckService>();
+            services.AddScoped<IDuckService, DuckService>();
 
             var con = Configuration["ConnectionStrings:DefaultConnection"];
 

@@ -6,6 +6,6 @@ namespace feedTheDuck.Interfaces
 {
     public interface IDuckService
     {
-        Task<Response<bool>> AddRecord(DuckRecordRequest request);
+        Task<Response<Guid>> AddRecord(DuckRecordRequest request);
     }
 }
