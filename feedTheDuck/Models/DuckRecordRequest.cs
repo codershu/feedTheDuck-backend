@@ -7,6 +7,7 @@ namespace feedTheDuck.Models
         {
         }
 
+        public Guid Id { get; set; }
         public string Location { get; set; }
         public string DuckType { get; set; }
         public string Food { get; set; }

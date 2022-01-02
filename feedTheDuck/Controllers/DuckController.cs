@@ -7,6 +7,7 @@ using feedTheDuck.Models;
 using feedTheDuck.Interfaces;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
+using feedTheDuck.Context;
 
 namespace feedTheDuck.Controllers
 {
@@ -32,6 +33,18 @@ namespace feedTheDuck.Controllers
         public ActionResult<Response<Guid>> AddRecord(DuckRecordRequest request)
         {
             return _duckService.AddRecord(request).Result;
+        }
+
+        [HttpGet("GetAllRecords")]
+        public ActionResult<Response<List<DuckFeedRecords>>> GetAllRecords()
+        {
+            return _duckService.GetAllRecords().Result;
+        }
+
+        [HttpPost("UpdateRecord")]
+        public ActionResult<Response<Guid>> UpdateRecord(DuckRecordRequest request)
+        {
+            return _duckService.UpdateRecord(request).Result;
         }
     }
 }
