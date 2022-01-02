@@ -32,10 +32,10 @@ namespace feedTheDuck
             services.AddControllers();
             services.AddSingleton<IDuckService, DuckService>();
 
-            var con = Configuration.GetConnectionString("MyDbConnection");
+            var con = Configuration["ConnectionStrings:DefaultConnection"];
 
             services.AddDbContext<DuckContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("MyDbConnection")));
+                options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
